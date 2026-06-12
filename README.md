@@ -22,28 +22,26 @@
    <br>
 </div>
 
----
-
-## 🚀 About
+## About
 
 This repository contains packages made by dimunyx, and **PKGBUILD** files for Arch Linux. \
 Packages can be installed directly via `pacman` by adding the repository to your pacman configuration file.
 
 ---
 
-## 📋 Package List
+## Package List
 
 | Package | Version | Description |
 |---------|---------|-------------|
 | —       | —       | *Coming soon...* |
 
-> 🛠 Packages are being built. Stay tuned!
+> Packages are being built. Stay tuned!
 
 ---
 
-## 🔧 Installation
+## Installation
 
-### 1️⃣ Add the repository
+### 1 Add the repository
 
 Append the following lines to `/etc/pacman.conf`:
 
@@ -53,13 +51,13 @@ SigLevel = Optional TrustAll
 Server = https://github.com/dimunyx/dimunyx-arch-repo/raw/main
 ```
 
-### 2️⃣ Sync package databases
+### 2 Sync package databases
 
 ```bash
 sudo pacman -Sy
 ```
 
-### 3️⃣ Install a package
+### 3 Install a package
 
 ```bash
 sudo pacman -S <package-name>
@@ -67,7 +65,7 @@ sudo pacman -S <package-name>
 
 ---
 
-## 🏗 Building Packages
+## Building Packages
 
 ```bash
 git clone https://github.com/dimunyx/dimunyx-arch-repo.git
@@ -77,7 +75,7 @@ makepkg -si
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -86,18 +84,3 @@ makepkg -si
 ├── repo-add      # Repository database
 └── README.md     # This file
 ```
-
----
-
-## 📄 License
-
-Distributed under the **MIT** license. See [LICENSE](LICENSE) for details.
-
----
-
-<div align="center">
-  <br>
-  <sub>Made with ❤️ for the Arch Linux community</sub>
-  <br>
-  <br>
-</div>
