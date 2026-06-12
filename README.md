@@ -25,15 +25,16 @@
 
 This repository contains packages made by dimunyx, and **PKGBUILD** for Arch Linux. \
 Packages can be installed directly via `pacman` by adding the repository to your pacman configuration. \
-P.S: Soon will be added manual install via `compilin`.
+P.S: Soon will be added manual installation via `compiling`.
 
 ---
 
-## Package List
+## Packages
 
-| Package | Version |
-|---------|---------|
-| dim-ls  | 0.0.6-1 |
+| Package  | Version |
+|----------|---------|
+| dim-ls   | 0.0.7-1 |
+| dimfetch | 0.2-1   |
 
 ---
 
