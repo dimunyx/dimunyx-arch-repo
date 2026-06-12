@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="assets/arch.svg" width="20" height="20" alt="Home" />
+  <img src="assets/arch.svg" width="50" height="50" alt="Home" />
   <br>
   <br>
 
