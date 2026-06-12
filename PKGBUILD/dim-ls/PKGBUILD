@@ -1,38 +1,27 @@
-# Maintainer: dimunyx botnarudumitru10@gmail.com
-# Contributor: -
+# Maintainer: dimunyx <botnarudumitru10@gmail.com>
 
 pkgname=dim-ls
-pkgver=0.0.6
-pkgrel=4
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="A fork of ls written in cpp instead of c"
 
-arch=(
-	'x86_64'
-)
+arch=('x86_64')
+license=('GPL-3.0')
 
-url="https://github.com/dimunyx/Cpp-projects/dim-ls"
+depends=('gcc-libs')
+makedepends=('gcc')
 
-license=(
-	'GPL-3.0'
-)
+options=('!debug')
 
-depends=(
-	'gcc-libs'
-)
-
-makedepends=(
-	'gcc'
-)
-
-options=(
-	'!debug'
-)
+source=("${pkgname}.cpp")
+md5sums=('SKIP')
 
 build() {
-    g++ -O3 -march=x86-64 -flto -std=c++20 \
-        "src/main.cpp" -o "src/dim-ls"
+    g++ -march=x86-64 -O3 -flto -pipe \
+        "$srcdir/${pkgname}.cpp" -o "${pkgname}"
 }
 
 package() {
-    install -Dm755 dim-ls "$pkgdir/usr/bin/dim-ls"
+    install -Dm755 "${srcdir}/${pkgname}" \
+        "${pkgdir}/usr/bin/${pkgname}"
 }

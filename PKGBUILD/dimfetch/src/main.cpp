@@ -1,1 +1,0 @@
-/home/dimunyx/GitHub/dimunyx-arch-repo/PKGBUILD/dimfetch/main.cpp
