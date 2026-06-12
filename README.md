@@ -4,8 +4,6 @@
   <br>
   <br>
 
-  # ![screenshot](assets/preview.png)
-
   **Персональный репозиторий пакетов для Arch Linux**
 
   <br>
