@@ -4,7 +4,7 @@
   <br>
   <br>
 
-  # 📦 dimunyx-arch-repo
+  # ![screenshot](assets/preview.png)
 
   **Персональный репозиторий пакетов для Arch Linux**
 
