@@ -4,9 +4,9 @@ pkgname = dim-ls
 pkgbase = dim-ls
 xdata = pkgtype=pkg
 pkgver = 0.0.2-1
-pkgdesc = dim-ls
+pkgdesc = dimunyx's ls fork written on cpp
 url = 
-builddate = 1781261354
+builddate = 1781261826
 packager = Unknown Packager
 size = 14704
 arch = x86_64
