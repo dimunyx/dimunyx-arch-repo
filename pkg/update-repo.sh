@@ -1,23 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
-REPO_NAME="dimunyx-arch-repo"
+REPO="dimunyx-arch-repo"
 
-# перейти в директорию скрипта
 cd "$(dirname "$0")"
 
-echo "Working dir: $(pwd)"
-
-echo "Updating repo database..."
-
 shopt -s nullglob
-packages=(*.pkg.tar.zst)
+pkgs=(*.pkg.tar.zst)
 
-if [ ${#packages[@]} -eq 0 ]; then
-    echo "❌ No packages found (*.pkg.tar.zst)"
-    exit 1
+if [ ${#pkgs[@]} -eq 0 ]; then
+  echo "❌ no packages"
+  exit 1
 fi
 
-repo-add "$REPO_NAME.db.tar.gz" "${packages[@]}"
+echo "Updating repo..."
 
-echo "Done!"
+repo-add "$REPO.db.tar.gz" "${pkgs[@]}"
+
+echo "Done"
