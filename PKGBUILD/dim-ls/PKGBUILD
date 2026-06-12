@@ -1,5 +1,5 @@
 pkgname=dim-ls
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="dimunyx's ls fork written on cpp"
 arch=('x86_64')
