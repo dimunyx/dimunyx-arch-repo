@@ -62,4 +62,4 @@ sudo pacman -S <package-name>
 ```
 
 ## Support
-### If you have any problems/issues with repository don't be shy and tell me the error [here](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJNvvRJqDnqmwXRJKDghCRdrssCrWcmJDXHxNDgDqNpvsVtDfPnPmVLHXTXgRnKrgKlFsFL)
+- If you have any problems/issues with repository don't be shy and tell me the error [here](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJNvvRJqDnqmwXRJKDghCRdrssCrWcmJDXHxNDgDqNpvsVtDfPnPmVLHXTXgRnKrgKlFsFL)
