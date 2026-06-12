@@ -1,0 +1,40 @@
+# Maintainer: dimunyx botnarudumitru10@gmail.com
+# Contributor: -
+
+pkgname=dimfetch
+pkgver=0.1
+pkgrel=1
+pkgdesc="dimunyx's own fetch"
+
+arch=(
+	'x86_64'
+)
+
+url="https://github.com/dimunyx/Cpp-projects/dimfetch"
+
+license=(
+	'GPL-3.0'
+)
+
+depends=(
+	'gcc'
+	'gcc-libs'
+)
+
+makedepends=(
+	'gcc'
+)
+
+options=(
+	'!debug'
+)
+
+build() {
+	g++ -O3 -march=native -flto -pipe -std=c++20 \
+		"$srcdir/main.cpp" \
+		-o dimfetch
+}
+
+package() {
+	install -Dm755 dimfetch "$pkgdir/usr/bim/dimfetch"
+}
