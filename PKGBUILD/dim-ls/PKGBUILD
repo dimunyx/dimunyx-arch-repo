@@ -1,0 +1,20 @@
+pkgname=dim-ls
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="dim-ls"
+arch=('x86_64')
+license=('GPL-3.0')
+depends=('gcc-libs')
+makedepends=('gcc')
+
+build() {
+    g++ -O2 -std=c++20 \
+        "$startdir/src/main.cpp" \
+        -o dim-ls
+}
+
+package() {
+    install -Dm755 \
+        dim-ls \
+        "$pkgdir/usr/bin/dim-ls"
+}
