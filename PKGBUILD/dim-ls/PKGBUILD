@@ -1,11 +1,12 @@
 pkgname=dim-ls
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="dim-ls"
 arch=('x86_64')
 license=('GPL-3.0')
 depends=('gcc-libs')
 makedepends=('gcc')
+options=('!debug')
 
 build() {
     g++ -O2 -std=c++20 \

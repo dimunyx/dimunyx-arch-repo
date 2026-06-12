@@ -3,12 +3,12 @@
 pkgname = dim-ls
 pkgbase = dim-ls
 xdata = pkgtype=pkg
-pkgver = 0.0.1-1
+pkgver = 0.0.2-1
 pkgdesc = dim-ls
 url = 
-builddate = 1781259807
+builddate = 1781261354
 packager = Unknown Packager
-size = 14800
+size = 14704
 arch = x86_64
 license = GPL-3.0
 depend = gcc-libs
