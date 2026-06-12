@@ -14,7 +14,6 @@
    <br>
 
    [![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=arch-linux&logoColor=white)](https://archlinux.org)
-   [![Maintained](https://img.shields.io/badge/maintained-yes-green?style=flat-square)](https://github.com/dimunyx)
    [![Last Update](https://img.shields.io/github/last-commit/dimunyx/dimunyx-arch-repo?style=flat-square&color=blueviolet)](https://github.com/dimunyx/dimunyx-arch-repo/commits/main)
 
    <br>
@@ -31,10 +30,10 @@ P.S: Soon will be added manual installation via `compiling`.
 
 ## Packages
 
-| Package  | Version |
-|----------|---------|
-| dim-ls   | 0.0.7-1 |
-| dimfetch | 0.2-1   |
+| Package | Version | Description |
+|----------|---------|-------------|
+| dim-ls | 0.0.7-1 | A fork of ls written in cpp instead of c |
+| dimfetch | 0.2-1 | A minimalistic fetch written in cpp by dimunyx |
 
 ---
 
@@ -63,4 +62,4 @@ sudo pacman -S <package-name>
 ```
 
 ## Support
-- If you have any problems/issues with repository don't be shy and tell me the error [here](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJNvvRJqDnqmwXRJKDghCRdrssCrWcmJDXHxNDgDqNpvsVtDfPnPmVLHXTXgRnKrgKlFsFL)
+If you have any problems/issues with repository don't be shy and tell me the error [here](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJNvvRJqDnqmwXRJKDghCRdrssCrWcmJDXHxNDgDqNpvsVtDfPnPmVLHXTXgRnKrgKlFsFL)
