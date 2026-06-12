@@ -4,7 +4,7 @@
   <br>
   <br>
 
-  **Персональный репозиторий пакетов для Arch Linux**
+  **Personal package repository for Arch Linux**
 
   <br>
 
@@ -19,28 +19,28 @@
 
 ---
 
-## 🚀 О репозитории
+## 🚀 About
 
-Данный репозиторий содержит **собранные пакеты** и **PKGBUILD** для Arch Linux.
-Пакеты можно установить напрямую через `pacman`, добавив репозиторий в конфигурацию.
-
----
-
-## 📋 Список пакетов
-
-| Пакет | Версия | Описание |
-|-------|--------|----------|
-| —     | —      | *Скоро будет пополнение...* |
-
-> 🛠 Пакеты находятся в процессе сборки. Следите за обновлениями!
+This repository contains **prebuilt packages** and **PKGBUILD** files for Arch Linux.
+Packages can be installed directly via `pacman` by adding the repository to your configuration.
 
 ---
 
-## 🔧 Установка
+## 📋 Package List
 
-### 1️⃣ Добавление репозитория
+| Package | Version | Description |
+|---------|---------|-------------|
+| —       | —       | *Coming soon...* |
 
-Добавьте следующие строки в конец файла `/etc/pacman.conf`:
+> 🛠 Packages are being built. Stay tuned!
+
+---
+
+## 🔧 Installation
+
+### 1️⃣ Add the repository
+
+Append the following lines to `/etc/pacman.conf`:
 
 ```ini
 [dimunyx-arch-repo]
@@ -48,21 +48,21 @@ SigLevel = Optional TrustAll
 Server = https://github.com/dimunyx/dimunyx-arch-repo/raw/main
 ```
 
-### 2️⃣ Обновление списка пакетов
+### 2️⃣ Sync package databases
 
 ```bash
 sudo pacman -Sy
 ```
 
-### 3️⃣ Установка пакета
+### 3️⃣ Install a package
 
 ```bash
-sudo pacman -S <имя-пакета>
+sudo pacman -S <package-name>
 ```
 
 ---
 
-## 🏗 Сборка пакетов
+## 🏗 Building Packages
 
 ```bash
 git clone https://github.com/dimunyx/dimunyx-arch-repo.git
@@ -72,12 +72,27 @@ makepkg -si
 
 ---
 
-## 📂 Структура репозитория
+## 📂 Repository Structure
 
 ```
 .
-├── pkg/          # Собранные пакеты (.pkg.tar.zst)
-├── PKGBUILD/     # Скрипты сборки
-├── repo-add      # База данных репозитория
-└── README.md     # Этот файл
+├── pkg/          # Prebuilt packages (.pkg.tar.zst)
+├── PKGBUILD/     # Build scripts
+├── repo-add      # Repository database
+└── README.md     # This file
 ```
+
+---
+
+## 📄 License
+
+Distributed under the **MIT** license. See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+  <br>
+  <sub>Made with ❤️ for the Arch Linux community</sub>
+  <br>
+  <br>
+</div>
