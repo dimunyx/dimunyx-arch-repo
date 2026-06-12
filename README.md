@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="https://raw.githubusercontent.com/archlinux/archlinux/master/logo/archlinux-logo-dark-90dpi.png" alt="Arch Linux" width="120"/>
+  <img src="assets/arch.svg" width="20" height="20" alt="Home" />
   <br>
   <br>
 
