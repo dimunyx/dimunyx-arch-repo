@@ -1,25 +1,25 @@
 <div align="center">
-    <br>
-    <img
-        src="assets/arch.svg"   
-        width="50"
-        height="50"
-        alt="Home"
-    />
-    <br>
-    <br>
+   <br>
+   <img
+       src="assets/arch.svg"   
+       width="50"
+       height="50"
+       alt="Home"
+   />
+   <br>
+   <br>
 
-    **Personal package repository for Arch Linux**
+   **Personal package repository for Arch Linux**
 
-    <br>
+   <br>
 
-    [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-    [![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=arch-linux&logoColor=white)](https://archlinux.org)
-    [![Maintained](https://img.shields.io/badge/maintained-yes-green?style=flat-square)](https://github.com/dimunyx)
-    [![Last Update](https://img.shields.io/github/last-commit/dimunyx/dimunyx-arch-repo?style=flat-square&color=blueviolet)](https://github.com/dimunyx/dimunyx-arch-repo/commits/main)
+   [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+   [![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=arch-linux&logoColor=white)](https://archlinux.org)
+   [![Maintained](https://img.shields.io/badge/maintained-yes-green?style=flat-square)](https://github.com/dimunyx)
+   [![Last Update](https://img.shields.io/github/last-commit/dimunyx/dimunyx-arch-repo?style=flat-square&color=blueviolet)](https://github.com/dimunyx/dimunyx-arch-repo/commits/main)
 
-    <br>
-    <br>
+   <br>
+   <br>
 </div>
 
 ---
