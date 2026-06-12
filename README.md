@@ -46,7 +46,7 @@ Append the following lines to `/etc/pacman.conf`:
 ```ini
 [dimunyx-arch-repo]
 SigLevel = Optional TrustAll
-Server = https://github.com/dimunyx/dimunyx-arch-repo/raw/main/pkg
+Server = https://github.com/dimunyx/dimunyx-arch-repo/pkg
 ```
 
 ### 2 Sync package databases
