@@ -651,7 +651,7 @@ int main(int argc, char *argv[]) {
                     time_type = TimeType::ctime;
                 break;
             case 272:
-                std::cout << "dim-ls 0.0.4\n";
+                std::cout << "dim-ls 0.0.6\n";
                 return 0;
             default:
                 std::cerr << "Try 'dim-ls --help' for more information.\n";

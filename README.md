@@ -32,7 +32,7 @@ Packages can be installed directly via `pacman` by adding the repository to your
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| dim-ls | 0.0.4-1 | dimunyx's ls fork written on cpp |
+| dim-ls | 0.0.6-1 | dimunyx's ls fork written on cpp |
 
 ---
 
