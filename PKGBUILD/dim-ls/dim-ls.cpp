@@ -1,9 +1,11 @@
 #include <algorithm>
 #include <cerrno>
 #include <climits>
+#include <clocale>
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include <cwchar>
 #include <dirent.h>
 #include <fcntl.h>
 #include <functional>
@@ -196,6 +198,15 @@ static std::string block_string(blkcnt_t blocks) {
     return s;
 }
 
+static int display_width(const std::string &s) {
+    size_t wlen = mbstowcs(nullptr, s.c_str(), 0);
+    if (wlen == (size_t)-1) return (int)s.size();
+    std::wstring ws(wlen, L'\0');
+    mbstowcs(&ws[0], s.c_str(), wlen + 1);
+    int w = wcswidth(ws.c_str(), wlen);
+    return w > 0 ? w : (int)s.size();
+}
+
 static void init_widths() {
     inode_width = 0;
     blocks_width = 0;
@@ -367,7 +378,7 @@ static void print_entry_short(const FileEntry &f, size_t col_width) {
     auto ind = indicator_str(f.stat_ok, f.st.st_mode);
     printf("%s", ind.c_str());
 
-    size_t printed = f.name.size() + ind.size();
+    size_t printed = (size_t)display_width(f.name) + ind.size();
     if (col_width > printed)
         for (size_t i = printed; i < col_width; i++)
             putchar(' ');
@@ -388,7 +399,7 @@ static void print_files() {
 
     size_t max_name = 0;
     for (auto &f : files) {
-        auto len = f.name.size() + (indicator_style != IndicatorStyle::none ? 1 : 0);
+        auto len = (size_t)display_width(f.name) + (indicator_style != IndicatorStyle::none ? 1 : 0);
         if (print_inode && f.stat_ok)
             len += inode_width + 1;
         if (print_block_size && f.stat_ok)
@@ -404,35 +415,68 @@ static void print_files() {
         return;
     }
 
-    size_t cols = line_length / (max_name + 2);
-    if (cols < 1) cols = 1;
-    size_t col_width = line_length / cols;
-    if (col_width < max_name + 2) col_width = max_name + 2;
+    auto entry_width = [](const FileEntry &f) -> size_t {
+        auto len = (size_t)display_width(f.name) + (indicator_style != IndicatorStyle::none ? 1 : 0);
+        if (print_inode && f.stat_ok)
+            len += inode_width + 1;
+        if (print_block_size && f.stat_ok)
+            len += blocks_width + 1;
+        return len;
+    };
+
+    size_t ncols = 1;
+    std::vector<size_t> col_widths;
+    size_t max_possible = std::min(files.size(), std::max(line_length / 2, (size_t)1));
+
+    for (size_t try_cols = max_possible; try_cols >= 1; try_cols--) {
+        size_t nrows = (files.size() + try_cols - 1) / try_cols;
+        if (nrows == 0) nrows = 1;
+        std::vector<size_t> maxw(try_cols, 0);
+        for (size_t c = 0; c < try_cols; c++) {
+            for (size_t r = 0; r < nrows; r++) {
+                size_t idx = c * nrows + r;
+                if (idx >= files.size()) break;
+                maxw[c] = std::max(maxw[c], entry_width(files[idx]));
+            }
+        }
+        size_t total = maxw[0];
+        for (size_t c = 1; c < try_cols; c++)
+            total += 2 + maxw[c];
+        if (total <= line_length) {
+            ncols = try_cols;
+            col_widths.resize(try_cols);
+            for (size_t c = 0; c < try_cols; c++)
+                col_widths[c] = maxw[c] + 2;
+            break;
+        }
+    }
+
+    size_t nrows = (files.size() + ncols - 1) / ncols;
 
     if (format == Format::many_per_line) {
-        size_t rows = (files.size() + cols - 1) / cols;
-        for (size_t r = 0; r < rows; r++) {
-            for (size_t c = 0; c < cols; c++) {
-                size_t idx = c * rows + r;
+        for (size_t r = 0; r < nrows; r++) {
+            for (size_t c = 0; c < ncols; c++) {
+                size_t idx = c * nrows + r;
                 if (idx >= files.size()) continue;
-                print_entry_short(files[idx], col_width);
+                print_entry_short(files[idx], col_widths[c]);
             }
             putchar('\n');
         }
     } else if (format == Format::horizontal) {
+        size_t h_width = max_name + 2;
         for (size_t i = 0; i < files.size(); i++) {
             if (i > 0) {
                 putchar(' ');
                 putchar(' ');
             }
-            print_entry_short(files[i], col_width);
+            print_entry_short(files[i], h_width);
         }
         putchar('\n');
     } else if (format == Format::with_commas) {
         for (size_t i = 0; i < files.size(); i++) {
             if (i > 0) {
                 size_t guess = 2;
-                if (guess + files[i].name.size() + 2 > line_length)
+                if (guess + entry_width(files[i]) + 2 > line_length)
                     printf(",\n");
                 else
                     printf(", ");
@@ -549,6 +593,7 @@ static void print_usage() {
 }
 
 int main(int argc, char *argv[]) {
+    setlocale(LC_ALL, "");
     is_tty = isatty(STDOUT_FILENO);
     if (is_tty) {
         format = Format::many_per_line;
