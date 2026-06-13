@@ -68,7 +68,7 @@ static const char *color_reset = "\033[0m";
 
 // -- Foreground colors --
 static const char *color_dir   = "\033[1;38;2;137;180;250m";  // Bold Blue      #89b4fa
-static const char *color_link  = "\033[1;38;2;203;166;247m";  // Bold Mauve     #cba6f7
+static const char *color_link  = "\033[1;38;2;180;190;254m";  // Bold Lavender  #b4befe
 static const char *color_exec  = "\033[1;38;2;166;227;161m";  // Bold Green     #a6e3a1
 static const char *color_fifo  = "\033[38;2;249;226;175m";    // Yellow         #f9e2af
 static const char *color_sock  = "\033[1;38;2;203;166;247m";  // Bold Mauve     #cba6f7
@@ -985,7 +985,9 @@ int main(int argc, char *argv[]) {
             case 't': sort_by = SortBy::time; break;
             case 'U': sort_by = SortBy::none; break;
             case 'u': time_type = TimeType::atime; break;
-            case 'v': sort_by = SortBy::name; break;
+            case 'v':
+                std::cout << "dim-ls 0.1.1\n";
+                return 0;
             case 'w':
                 line_length = std::stoul(optarg);
                 break;
@@ -1030,7 +1032,7 @@ int main(int argc, char *argv[]) {
                     time_type = TimeType::ctime;
                 break;
             case 272:
-                std::cout << "dim-ls 0.0.9\n";
+                std::cout << "dim-ls 0.1.1\n";
                 return 0;
             default:
                 std::cerr << "Try 'dim-ls --help' for more information.\n";

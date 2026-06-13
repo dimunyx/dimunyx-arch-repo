@@ -1,9 +1,9 @@
 # Maintainer: dimunyx <botnarudumitru10@gmail.com>
 
 pkgname=dim-ls
-pkgver=0.0.9
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Fork of ls written in cpp with icons and LTO optimizations"
+pkgdesc="A ls fork written on cpp with icon and colors"
 
 arch=('x86_64')
 license=('GPL-3.0')

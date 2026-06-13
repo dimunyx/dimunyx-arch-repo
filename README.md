@@ -30,10 +30,10 @@ P.S: Soon will be added manual installation via `compiling`.
 
 ## Packages
 
-| Package | Version | Description |
-|----------|---------|-------------|
-| dim-ls | 0.0.9-1 | Fork of ls written in cpp with icons and LTO optimizations |
-| dimfetch | 0.2-2 | A minimalistic fetch written in cpp by dimunyx with LTO optimizations |
+| Package | Version | Description | Optimizations |
+|----------|---------|-------------|---------------|
+| dim-ls | 0.1.0-1 | A ls fork written on cpp with icon and colors | O3 + LTO + PIPE |
+| dimfetch | 0.2-2 | Minimalistic fetch written in cpp | O3 + LTO + PIPE |
 
 ---
 

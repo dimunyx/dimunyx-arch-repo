@@ -243,10 +243,17 @@ void print_logo() {
 }
 
 int main(int argc, char* argv[]) {
-    if (argc > 1 && std::string(argv[1]) == "--help") {
-        std::cout << "Usage: " << argv[0] << " [--help]\n";
-        std::cout << "A system information tool (neofetch clone)\n";
-        return 0;
+    if (argc > 1) {
+        std::string arg = argv[1];
+        if (arg == "--help") {
+            std::cout << "Usage: " << argv[0] << " [--help] [-v | --version]\n";
+            std::cout << "A system information tool (neofetch clone)\n";
+            return 0;
+        }
+        if (arg == "-v" || arg == "--version") {
+            std::cout << "dimfetch 0.3\n";
+            return 0;
+        }
     }
     print_logo();
     return 0;

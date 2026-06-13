@@ -1,9 +1,9 @@
 # Maintainer: dimunyx <botnarudumitru10@gmail.com>
 
 pkgname=dimfetch
-pkgver=0.2
-pkgrel=2
-pkgdesc="A minimalistic fetch written in cpp by dimunyx with LTO optimizations"
+pkgver=0.3
+pkgrel=1
+pkgdesc="Minimalistic fetch written in cpp"
 
 arch=('x86_64')
 license=('GPL-3.0')
