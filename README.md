@@ -32,8 +32,8 @@ P.S: Soon will be added manual installation via `compiling`.
 
 | Package | Version | Description |
 |----------|---------|-------------|
-| dim-ls | 0.0.7-1 | A fork of ls written in cpp instead of c |
-| dimfetch | 0.2-1 | A minimalistic fetch written in cpp by dimunyx |
+| dim-ls | 0.0.9-1 | Fork of ls written in cpp with icons and LTO optimizations |
+| dimfetch | 0.2-1 | A minimalistic fetch written in cpp by dimunyx with LTO optimizations |
 
 ---
 

@@ -2,8 +2,8 @@
 
 pkgname=dimfetch
 pkgver=0.2
-pkgrel=1
-pkgdesc="A minimalistic fetch written in cpp by dimunyx"
+pkgrel=2
+pkgdesc="A minimalistic fetch written in cpp by dimunyx with LTO optimizations"
 
 arch=('x86_64')
 license=('GPL-3.0')
