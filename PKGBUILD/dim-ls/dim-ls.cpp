@@ -63,19 +63,24 @@ static size_t size_width = 0;
 
 static int exit_status = 0;
 
+// Catppuccin Mocha theme — accent: blue
 static const char *color_reset = "\033[0m";
-static const char *color_dir = "\033[01;34m";
-static const char *color_link = "\033[01;36m";
-static const char *color_exec = "\033[01;32m";
-static const char *color_fifo = "\033[33m";
-static const char *color_sock = "\033[01;35m";
-static const char *color_blk = "\033[01;33m";
-static const char *color_chr = "\033[01;33m";
-static const char *color_suid = "\033[37;41m";
-static const char *color_sgid = "\033[30;43m";
-static const char *color_sticky = "\033[37;44m";
-static const char *color_ow = "\033[34;42m";
-static const char *color_tw = "\033[30;42m";
+
+// -- Foreground colors --
+static const char *color_dir   = "\033[1;38;2;137;180;250m";  // Bold Blue      #89b4fa
+static const char *color_link  = "\033[1;38;2;203;166;247m";  // Bold Mauve     #cba6f7
+static const char *color_exec  = "\033[1;38;2;166;227;161m";  // Bold Green     #a6e3a1
+static const char *color_fifo  = "\033[38;2;249;226;175m";    // Yellow         #f9e2af
+static const char *color_sock  = "\033[1;38;2;203;166;247m";  // Bold Mauve     #cba6f7
+static const char *color_blk   = "\033[1;38;2;250;179;135m";  // Bold Peach     #fab387
+static const char *color_chr   = "\033[1;38;2;250;179;135m";  // Bold Peach     #fab387
+
+// -- Background combinations --
+static const char *color_suid  = "\033[1;38;2;205;214;244;48;2;243;139;168m";  // Text on Red    fg:#cdd6f4 bg:#f38ba8
+static const char *color_sgid  = "\033[1;38;2;30;30;46;48;2;249;226;175m";     // Base on Yellow fg:#1e1e2e bg:#f9e2af
+static const char *color_sticky= "\033[1;38;2;205;214;244;48;2;137;180;250m";  // Text on Blue   fg:#cdd6f4 bg:#89b4fa
+static const char *color_ow    = "\033[1;38;2;137;180;250;48;2;166;227;161m";  // Blue on Green  fg:#89b4fa bg:#a6e3a1
+static const char *color_tw    = "\033[1;38;2;30;30;46;48;2;166;227;161m";     // Base on Green  fg:#1e1e2e bg:#a6e3a1
 
 static std::string file_type_char(mode_t mode, bool stat_ok) {
     if (stat_ok) {
@@ -129,6 +134,327 @@ static std::string color_for(mode_t mode) {
         if (mode & S_ISGID) return color_sgid;
         if (mode & (S_IXUSR | S_IXGRP | S_IXOTH)) return color_exec;
     }
+    return "";
+}
+
+static const char *icon_for(const std::string &name, mode_t mode = 0) {
+    if (mode && S_ISDIR(mode)) return " ";
+    if (mode && S_ISLNK(mode)) return " ";
+    auto dot = name.rfind('.');
+    if (dot == std::string::npos) return "";
+    auto ext = std::string_view(name).substr(dot);
+    if (ext == ".7z")        return " ";
+    if (ext == ".ai")        return " ";
+    if (ext == ".android")   return " ";
+    if (ext == ".apk")       return " ";
+    if (ext == ".asm")       return " ";
+    if (ext == ".astro")     return " ";
+    if (ext == ".avi")       return " ";
+    if (ext == ".awk")       return " ";
+    if (ext == ".azcli")     return " ";
+    if (ext == ".bak")       return "󰁯 ";
+    if (ext == ".bash")      return " ";
+    if (ext == ".bat")       return " ";
+    if (ext == ".bazel")     return " ";
+    if (ext == ".bib")       return "󱉟 ";
+    if (ext == ".bicep")     return " ";
+    if (ext == ".blend")     return "󰂫 ";
+    if (ext == ".bmp")       return " ";
+    if (ext == ".bz2")       return " ";
+    if (ext == ".c")         return " ";
+    if (ext == ".cbl")       return " ";
+    if (ext == ".cc")        return " ";
+    if (ext == ".cfg")       return " ";
+    if (ext == ".cjs")       return " ";
+    if (ext == ".clj")       return " ";
+    if (ext == ".cljs")      return " ";
+    if (ext == ".cmake")     return " ";
+    if (ext == ".cob")       return " ";
+    if (ext == ".coffee")    return " ";
+    if (ext == ".conda")     return " ";
+    if (ext == ".conf")      return " ";
+    if (ext == ".cpp")       return " ";
+    if (ext == ".cr")        return " ";
+    if (ext == ".cs")        return "󰌛 ";
+    if (ext == ".csh")       return " ";
+    if (ext == ".cson")      return " ";
+    if (ext == ".css")       return " ";
+    if (ext == ".csv")       return " ";
+    if (ext == ".cts")       return " ";
+    if (ext == ".cu")        return " ";
+    if (ext == ".cue")       return "󰲹 ";
+    if (ext == ".cxx")       return " ";
+    if (ext == ".d")         return " ";
+    if (ext == ".dart")      return " ";
+    if (ext == ".db")        return " ";
+    if (ext == ".desktop")   return " ";
+    if (ext == ".diff")      return " ";
+    if (ext == ".dll")       return " ";
+    if (ext == ".doc")       return "󰈬 ";
+    if (ext == ".dockerfile")return "󰡨 ";
+    if (ext == ".docx")      return "󰈬 ";
+    if (ext == ".dot")       return "󱁉 ";
+    if (ext == ".download")  return " ";
+    if (ext == ".dump")      return " ";
+    if (ext == ".ebuild")    return " ";
+    if (ext == ".ejs")       return " ";
+    if (ext == ".el")        return " ";
+    if (ext == ".elc")       return " ";
+    if (ext == ".elm")       return " ";
+    if (ext == ".env")       return " ";
+    if (ext == ".eot")       return " ";
+    if (ext == ".epub")      return " ";
+    if (ext == ".erb")       return " ";
+    if (ext == ".erl")       return " ";
+    if (ext == ".ex")        return " ";
+    if (ext == ".exe")       return " ";
+    if (ext == ".exs")       return " ";
+    if (ext == ".f90")       return "󱈚 ";
+    if (ext == ".feature")   return " ";
+    if (ext == ".fish")      return " ";
+    if (ext == ".flac")      return " ";
+    if (ext == ".fnl")       return " ";
+    if (ext == ".fs")        return " ";
+    if (ext == ".fsi")       return " ";
+    if (ext == ".fsx")       return " ";
+    if (ext == ".gd")        return " ";
+    if (ext == ".gemfile")   return " ";
+    if (ext == ".gemspec")   return " ";
+    if (ext == ".gif")       return " ";
+    if (ext == ".git")       return " ";
+    if (ext == ".gitignore") return " ";
+    if (ext == ".glb")       return " ";
+    if (ext == ".gleam")     return " ";
+    if (ext == ".glsl")      return " ";
+    if (ext == ".go")        return " ";
+    if (ext == ".godot")     return " ";
+    if (ext == ".gql")       return " ";
+    if (ext == ".gradle")    return " ";
+    if (ext == ".graphql")   return " ";
+    if (ext == ".gz")        return " ";
+    if (ext == ".h")         return " ";
+    if (ext == ".haml")      return " ";
+    if (ext == ".hbs")       return " ";
+    if (ext == ".heex")      return " ";
+    if (ext == ".hex")       return " ";
+    if (ext == ".hh")        return " ";
+    if (ext == ".hpp")       return " ";
+    if (ext == ".hrl")       return " ";
+    if (ext == ".hs")        return " ";
+    if (ext == ".htm")       return " ";
+    if (ext == ".html")      return " ";
+    if (ext == ".http")      return " ";
+    if (ext == ".hx")        return " ";
+    if (ext == ".hxx")       return " ";
+    if (ext == ".ico")       return " ";
+    if (ext == ".import")    return " ";
+    if (ext == ".info")      return " ";
+    if (ext == ".ini")       return " ";
+    if (ext == ".ino")       return " ";
+    if (ext == ".ipynb")     return " ";
+    if (ext == ".iso")       return " ";
+    if (ext == ".jar")       return " ";
+    if (ext == ".java")      return " ";
+    if (ext == ".jl")        return " ";
+    if (ext == ".jinja")     return " ";
+    if (ext == ".jpeg")      return " ";
+    if (ext == ".jpg")       return " ";
+    if (ext == ".js")        return " ";
+    if (ext == ".json")      return " ";
+    if (ext == ".json5")     return " ";
+    if (ext == ".jsonc")     return " ";
+    if (ext == ".jsx")       return " ";
+    if (ext == ".jvm")       return " ";
+    if (ext == ".kbx")       return "󰯄 ";
+    if (ext == ".kdb")       return " ";
+    if (ext == ".kdbx")      return " ";
+    if (ext == ".ko")        return " ";
+    if (ext == ".kt")        return " ";
+    if (ext == ".kts")       return " ";
+    if (ext == ".lck")       return " ";
+    if (ext == ".less")      return " ";
+    if (ext == ".lhs")       return " ";
+    if (ext == ".lib")       return " ";
+    if (ext == ".license")   return " ";
+    if (ext == ".liquid")    return " ";
+    if (ext == ".lock")      return " ";
+    if (ext == ".log")       return "󰌱 ";
+    if (ext == ".lrc")       return "󰨖 ";
+    if (ext == ".lua")       return " ";
+    if (ext == ".luac")      return " ";
+    if (ext == ".luau")      return " ";
+    if (ext == ".m")         return " ";
+    if (ext == ".m3u")       return "󰲹 ";
+    if (ext == ".m3u8")      return "󰲹 ";
+    if (ext == ".m4a")       return " ";
+    if (ext == ".m4v")       return " ";
+    if (ext == ".magnet")    return " ";
+    if (ext == ".makefile")  return " ";
+    if (ext == ".markdown")  return " ";
+    if (ext == ".material")  return " ";
+    if (ext == ".md")        return " ";
+    if (ext == ".md5")       return "󰕥 ";
+    if (ext == ".mdx")       return " ";
+    if (ext == ".mint")      return "󰌪 ";
+    if (ext == ".mjs")       return " ";
+    if (ext == ".mk")        return " ";
+    if (ext == ".mkv")       return " ";
+    if (ext == ".ml")        return " ";
+    if (ext == ".mli")       return " ";
+    if (ext == ".mm")        return " ";
+    if (ext == ".mo")        return " ";
+    if (ext == ".mobi")      return " ";
+    if (ext == ".mojo")      return " ";
+    if (ext == ".mov")       return " ";
+    if (ext == ".mp3")       return " ";
+    if (ext == ".mp4")       return " ";
+    if (ext == ".mts")       return " ";
+    if (ext == ".mustache")  return " ";
+    if (ext == ".nfo")       return " ";
+    if (ext == ".nim")       return " ";
+    if (ext == ".nimble")    return " ";
+    if (ext == ".nix")       return " ";
+    if (ext == ".norg")      return " ";
+    if (ext == ".nu")        return " ";
+    if (ext == ".o")         return " ";
+    if (ext == ".obj")       return "󰆧 ";
+    if (ext == ".odin")      return "󰟢 ";
+    if (ext == ".ogg")       return " ";
+    if (ext == ".ogv")       return " ";
+    if (ext == ".opus")      return " ";
+    if (ext == ".org")       return " ";
+    if (ext == ".otf")       return " ";
+    if (ext == ".part")      return " ";
+    if (ext == ".patch")     return " ";
+    if (ext == ".pck")       return " ";
+    if (ext == ".pdf")       return " ";
+    if (ext == ".pem")       return "󰷖 ";
+    if (ext == ".php")       return " ";
+    if (ext == ".pl")        return " ";
+    if (ext == ".plist")     return " ";
+    if (ext == ".ply")       return "󰆧 ";
+    if (ext == ".pm")        return " ";
+    if (ext == ".png")       return " ";
+    if (ext == ".po")        return " ";
+    if (ext == ".pot")       return " ";
+    if (ext == ".pp")        return " ";
+    if (ext == ".ppt")       return "󰈧 ";
+    if (ext == ".pptx")      return "󰈧 ";
+    if (ext == ".prisma")    return " ";
+    if (ext == ".pro")       return " ";
+    if (ext == ".ps1")       return "󰨊 ";
+    if (ext == ".psd")       return " ";
+    if (ext == ".psd1")      return "󰨊 ";
+    if (ext == ".psm1")      return "󰨊 ";
+    if (ext == ".pub")       return "󰷖 ";
+    if (ext == ".pug")       return " ";
+    if (ext == ".py")        return " ";
+    if (ext == ".pyc")       return " ";
+    if (ext == ".pyd")       return " ";
+    if (ext == ".pyi")       return " ";
+    if (ext == ".pyo")       return " ";
+    if (ext == ".pyw")       return " ";
+    if (ext == ".pyx")       return " ";
+    if (ext == ".qm")        return " ";
+    if (ext == ".qml")       return " ";
+    if (ext == ".qrc")       return " ";
+    if (ext == ".qss")       return " ";
+    if (ext == ".r")         return "󰟔 ";
+    if (ext == ".rake")      return " ";
+    if (ext == ".rar")       return " ";
+    if (ext == ".rasi")      return " ";
+    if (ext == ".razor")     return "󱦘 ";
+    if (ext == ".rb")        return " ";
+    if (ext == ".res")       return " ";
+    if (ext == ".resi")      return " ";
+    if (ext == ".rkt")       return "󰘧 ";
+    if (ext == ".rlib")      return " ";
+    if (ext == ".rmd")       return " ";
+    if (ext == ".rproj")     return "󰗆 ";
+    if (ext == ".rs")        return " ";
+    if (ext == ".rss")       return " ";
+    if (ext == ".rtf")       return " ";
+    if (ext == ".s")         return " ";
+    if (ext == ".sass")      return " ";
+    if (ext == ".sbt")       return " ";
+    if (ext == ".sc")        return " ";
+    if (ext == ".scad")      return " ";
+    if (ext == ".scala")     return " ";
+    if (ext == ".scm")       return "󰘧 ";
+    if (ext == ".scss")      return " ";
+    if (ext == ".sh")        return " ";
+    if (ext == ".sha1")      return "󰕥 ";
+    if (ext == ".sha256")    return "󰕥 ";
+    if (ext == ".sha512")    return "󰕥 ";
+    if (ext == ".sig")       return " ";
+    if (ext == ".slim")      return " ";
+    if (ext == ".sln")       return " ";
+    if (ext == ".smi")       return "󰨖 ";
+    if (ext == ".so")        return " ";
+    if (ext == ".sol")       return " ";
+    if (ext == ".sql")       return " ";
+    if (ext == ".sqlite")    return " ";
+    if (ext == ".sqlite3")   return " ";
+    if (ext == ".srt")       return "󰨖 ";
+    if (ext == ".ssa")       return "󰨖 ";
+    if (ext == ".stl")       return "󰆧 ";
+    if (ext == ".styl")      return " ";
+    if (ext == ".stylus")    return " ";
+    if (ext == ".sub")       return "󰨖 ";
+    if (ext == ".sublime")   return " ";
+    if (ext == ".sv")        return "󰍛 ";
+    if (ext == ".svelte")    return " ";
+    if (ext == ".svg")       return "󰜡 ";
+    if (ext == ".svh")       return "󰍛 ";
+    if (ext == ".svx")       return " ";
+    if (ext == ".swift")     return " ";
+    if (ext == ".sym")       return " ";
+    if (ext == ".t")         return " ";
+    if (ext == ".tar")       return " ";
+    if (ext == ".tcl")       return "󰛓 ";
+    if (ext == ".templ")     return " ";
+    if (ext == ".terminal")  return " ";
+    if (ext == ".tex")       return " ";
+    if (ext == ".tf")        return " ";
+    if (ext == ".tfvars")    return " ";
+    if (ext == ".tgz")       return " ";
+    if (ext == ".tmpl")      return " ";
+    if (ext == ".tmux")      return " ";
+    if (ext == ".toml")      return " ";
+    if (ext == ".torrent")   return " ";
+    if (ext == ".ts")        return " ";
+    if (ext == ".tsx")       return " ";
+    if (ext == ".ttf")       return " ";
+    if (ext == ".twig")      return " ";
+    if (ext == ".txt")       return " ";
+    if (ext == ".v")         return "󰍛 ";
+    if (ext == ".vh")        return "󰍛 ";
+    if (ext == ".vhd")       return "󰍛 ";
+    if (ext == ".vhdl")      return "󰍛 ";
+    if (ext == ".vim")       return " ";
+    if (ext == ".vtt")       return "󰨖 ";
+    if (ext == ".vue")       return "󰡄 ";
+    if (ext == ".wav")       return " ";
+    if (ext == ".wasm")      return " ";
+    if (ext == ".webm")      return " ";
+    if (ext == ".webp")      return " ";
+    if (ext == ".whl")       return " ";
+    if (ext == ".woff")      return " ";
+    if (ext == ".woff2")     return " ";
+    if (ext == ".xcf")       return " ";
+    if (ext == ".xls")       return " ";
+    if (ext == ".xlsx")      return " ";
+    if (ext == ".xml")       return " ";
+    if (ext == ".xul")       return " ";
+    if (ext == ".xz")        return " ";
+    if (ext == ".yaml")      return " ";
+    if (ext == ".yarn")      return " ";
+    if (ext == ".yml")       return " ";
+    if (ext == ".zig")       return " ";
+    if (ext == ".zip")       return " ";
+    if (ext == ".zsh")       return " ";
+    if (ext == ".zsh_theme") return " ";
+    if (ext == ".zst")       return " ";
     return "";
 }
 
@@ -354,6 +680,8 @@ static void print_entry_long(const FileEntry &f) {
     }
     auto col = color_for(f.st.st_mode);
     if (!col.empty()) printf("%s", col.c_str());
+    auto icon = icon_for(f.name, f.stat_ok ? f.st.st_mode : 0);
+    if (*icon) printf("%s", icon);
     printf("%s", f.name.c_str());
     if (!col.empty()) printf("%s", color_reset);
     printf("%s", indicator_str(f.stat_ok, f.st.st_mode).c_str());
@@ -373,12 +701,14 @@ static void print_entry_short(const FileEntry &f, size_t col_width) {
         printf("%*s ", (int)blocks_width,
                f.stat_ok ? block_string(f.st.st_blocks).c_str() : "?");
 
+    auto icon = icon_for(f.name, f.stat_ok ? f.st.st_mode : 0);
+    if (*icon) printf("%s", icon);
     printf("%s", f.name.c_str());
     if (!col.empty()) printf("%s", color_reset);
     auto ind = indicator_str(f.stat_ok, f.st.st_mode);
     printf("%s", ind.c_str());
 
-    size_t printed = (size_t)display_width(f.name) + ind.size();
+    size_t printed = (size_t)display_width(f.name) + ind.size() + (*icon ? display_width(icon) : 0);
     if (col_width > printed)
         for (size_t i = printed; i < col_width; i++)
             putchar(' ');
@@ -400,6 +730,8 @@ static void print_files() {
     size_t max_name = 0;
     for (auto &f : files) {
         auto len = (size_t)display_width(f.name) + (indicator_style != IndicatorStyle::none ? 1 : 0);
+        auto icon = icon_for(f.name, f.stat_ok ? f.st.st_mode : 0);
+        if (*icon) len += display_width(icon);
         if (print_inode && f.stat_ok)
             len += inode_width + 1;
         if (print_block_size && f.stat_ok)
@@ -417,6 +749,8 @@ static void print_files() {
 
     auto entry_width = [](const FileEntry &f) -> size_t {
         auto len = (size_t)display_width(f.name) + (indicator_style != IndicatorStyle::none ? 1 : 0);
+        auto icon = icon_for(f.name, f.stat_ok ? f.st.st_mode : 0);
+        if (*icon) len += display_width(icon);
         if (print_inode && f.stat_ok)
             len += inode_width + 1;
         if (print_block_size && f.stat_ok)
