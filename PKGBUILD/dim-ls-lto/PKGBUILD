@@ -2,7 +2,7 @@
 
 pkgname=dim-ls-lto
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A ls fork written on cpp with icon and colors"
 
 arch=('x86_64')
