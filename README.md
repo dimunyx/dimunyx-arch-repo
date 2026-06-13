@@ -32,10 +32,10 @@ P.S: Soon will be added manual installation via `compiling`.
 
 | Package | Version | Description | Optimizations |
 |----------|---------|-------------|---------------|
-| dim-ls | 0.1.1-2 | A ls fork written on C++ with icons and colors | O3 |
-| dim-ls-lto | 0.1.1-2 | A ls fork written on C++ with icons and colors | O3 + LTO |
-| dimfetch | 0.3-2 | Minimalistic fetch written in C++ | O3 |
-| dimfetch-lto | 0.3-2 | Minimalistic fetch written in C++ | O3 + LTO |
+| dim-ls | 0.1.1-3 | A ls fork written on C++ with icons and colors | O3 |
+| dim-ls-lto | 0.1.1-3 | A ls fork written on C++ with icons and colors | O3 + LTO |
+| dimfetch | 0.3-3 | Minimalistic fetch written in C++ | O3 |
+| dimfetch-lto | 0.3-3 | Minimalistic fetch written in C++ | O3 + LTO |
 
 ---
 
@@ -47,7 +47,7 @@ P.S: Soon will be added manual installation via `compiling`.
 curl -sS https://raw.githubusercontent.com/dimunyx/dimunyx-arch-repo/main/repo/x86_64/dimunyx-arch-repo.pubkey | sudo pacman-key --add - && sudo pacman-key --lsign-key 09D90FC946B01EFE
 ```
 
-### 2 Add the repository
+### 3 Add the repository
 
 Put the following lines to `/etc/pacman.conf`:
 
