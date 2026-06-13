@@ -54,13 +54,13 @@ Put the following lines to `/etc/pacman.conf`:
 ```ini
 [dimunyx-arch-repo]
 SigLevel = Required DatabaseOptional
-Server = https://raw.githubusercontent.com/dimunyx/dimunyx-arch-repo/main/pkg
+Server = https://raw.githubusercontent.com/dimunyx/dimunyx-arch-repo/main/repo/x86_64
 ```
 
 ### 3 Sync package databases
 
 ```bash
-sudo pacman -Sy
+sudo pacman -Syy
 ```
 
 ### 4 Install a package
