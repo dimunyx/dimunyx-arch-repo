@@ -1,9 +1,9 @@
 # Maintainer: dimunyx <botnarudumitru10@gmail.com>
 
-pkgname=dim-ls
-pkgver=0.1.1
+pkgname=dimfetch-lto
+pkgver=0.3
 pkgrel=2
-pkgdesc="A ls fork written on cpp with icon and colors"
+pkgdesc="Minimalistic fetch written in cpp"
 
 arch=('x86_64')
 license=('GPL-3.0')
@@ -17,7 +17,7 @@ source=("${pkgname}.cpp")
 md5sums=('SKIP')
 
 build() {
-    g++ -march=x86-64 -O3 -pipe \
+    g++ -march=x86-64 -O3 -flto -pipe \
         "$srcdir/${pkgname}.cpp" -o "${pkgname}"
 }
 

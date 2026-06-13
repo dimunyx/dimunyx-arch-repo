@@ -2,7 +2,7 @@
 
 pkgname=dimfetch
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic fetch written in cpp"
 
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}.cpp")
 md5sums=('SKIP')
 
 build() {
-    g++ -march=x86-64 -O3 -flto -pipe \
+    g++ -march=x86-64 -O3 -pipe \
         "$srcdir/${pkgname}.cpp" -o "${pkgname}"
 }
 
