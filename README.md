@@ -32,32 +32,38 @@ P.S: Soon will be added manual installation via `compiling`.
 
 | Package | Version | Description | Optimizations |
 |----------|---------|-------------|---------------|
-| dim-ls | 0.1.1-2 | A ls fork written on cpp with icons and colors | O3 |
-| dim-ls-lto | 0.1.1-2 | A ls fork written on cpp with icons and colors | O3 + LTO |
-| dimfetch | 0.3-2 | Minimalistic fetch written in cpp | O3 |
-| dimfetch-lto | 0.3-2 | Minimalistic fetch written in cpp | O3 + LTO |
+| dim-ls | 0.1.1-2 | A ls fork written on C++ with icons and colors | O3 |
+| dim-ls-lto | 0.1.1-2 | A ls fork written on C++ with icons and colors | O3 + LTO |
+| dimfetch | 0.3-2 | Minimalistic fetch written in C++ | O3 |
+| dimfetch-lto | 0.3-2 | Minimalistic fetch written in C++ | O3 + LTO |
 
 ---
 
 ## Installation
 
-### 1 Add the repository
+### 1 Import the GPG key
+
+```bash
+curl -sS https://raw.githubusercontent.com/dimunyx/dimunyx-arch-repo/main/repo/x86_64/dimunyx-arch-repo.pubkey | sudo pacman-key --add - && sudo pacman-key --lsign-key 09D90FC946B01EFE
+```
+
+### 2 Add the repository
 
 Put the following lines to `/etc/pacman.conf`:
 
 ```ini
 [dimunyx-arch-repo]
-SigLevel = Optional TrustAll
+SigLevel = Required DatabaseOptional
 Server = https://raw.githubusercontent.com/dimunyx/dimunyx-arch-repo/main/pkg
 ```
 
-### 2 Sync package databases
+### 3 Sync package databases
 
 ```bash
 sudo pacman -Sy
 ```
 
-### 3 Install a package
+### 4 Install a package
 
 ```bash
 sudo pacman -S <package-name>
