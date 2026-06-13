@@ -32,8 +32,8 @@ P.S: Soon will be added manual installation via `compiling`.
 
 | Package | Version | Description | Optimizations |
 |----------|---------|-------------|---------------|
-| dim-ls | 0.1.0-1 | A ls fork written on cpp with icon and colors | O3 + LTO + PIPE |
-| dimfetch | 0.2-2 | Minimalistic fetch written in cpp | O3 + LTO + PIPE |
+| dim-ls | 0.1.1-1 | A ls fork written on cpp with icon and colors | O3 + LTO + PIPE |
+| dimfetch | 0.3-1 | Minimalistic fetch written in cpp | O3 + LTO + PIPE |
 
 ---
 
